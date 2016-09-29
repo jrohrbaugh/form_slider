@@ -10,6 +10,7 @@ window.sliderInput =
   load: -> 
     self = @
     sliders = $('.form-slider')
+    console.log("load")
     sliders.each ->
       currentSlider = $(@)
       currentSliderContainer = currentSlider.parents('.slider-container')
@@ -20,11 +21,28 @@ window.sliderInput =
         max: currentSlider.data('max'),
         step: currentSlider.data('step'),
         disabled: currentSlider.data('disabled'),
+        labels: currentSlider.data('option_labels'),
         value: inputField.attr('value'),
         create: ->
+          console.log("create")
+          console.log(currentSlider)
           currentSliderContainer.find('label').append(currentSlider.data('append'))
           sliderValue.text(inputField.attr('value'))
           currentSlider.applyGradient(currentSlider.find('.ui-slider-handle').css('left'))
+
+          labels_count = currentSlider.data('max') - currentSlider.data('min')
+          labels = currentSlider.data('option_labels')
+          console.log(labels)
+
+          if labels
+            i = 0
+
+            while i <= labels_count
+              label_val = labels[i]
+              el = $('<label>' + label_val + '</label>').css('left', i / labels_count * 100 + '%')
+              console.log(el)
+              currentSlider.append el
+              i++
           inputField.hide()
         change: ( event, ui ) ->
           inputField.val(ui.value).parents('.slider-container')
@@ -33,6 +51,7 @@ window.sliderInput =
         slide: ( event, ui ) ->
           inputField.val(ui.value).parents('.slider-container')
           sliderValue.text(ui.value)
+
 
   findDisplayValue: (currentSlider, currentSliderContainer)->
     if currentSlider.data('value-display')
