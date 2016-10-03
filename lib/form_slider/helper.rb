@@ -23,7 +23,6 @@ module FormSlider
         options['data-labels'] = args[:option_labels].join(",")
       end
       options['data-value-display'] = args[:value_display]
-      binding.pry
       options
     end
   end

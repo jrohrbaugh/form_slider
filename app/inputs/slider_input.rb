@@ -13,7 +13,6 @@ class SliderInput < Formtastic::Inputs::StringInput
     label = slider_label(method, options)
     slider = content_tag :div, '', slider_options(method, options)
     output = builder.input(method, input_options.merge(input_html: { value: value }, wrapper_html: { class: "slider-container" }))
-    binding.pry
     output.gsub! /(<label).*(<\/label>)/, label
     output.insert output.index(/(<input)/), slider
     output.html_safe
