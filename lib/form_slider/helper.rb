@@ -19,7 +19,8 @@ module FormSlider
       options['data-disabled'] = args[:disabled] || false
       options['data-step'] = args[:step] || 1
       options['data-color'] = args[:color] || 'white'
-      options['data-labels'] = args[:label_options] || "3"
+      if args[:option_labels].present?
+        options['data-labels'] = args[:option_labels].join(",")
       options['data-value-display'] = args[:value_display]
       binding.pry
       options
