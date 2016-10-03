@@ -21,6 +21,7 @@ module FormSlider
       options['data-color'] = args[:color] || 'white'
       options['data-labels'] = args[:label_options] || "3"
       options['data-value-display'] = args[:value_display]
+      binding.pry
       options
     end
   end
