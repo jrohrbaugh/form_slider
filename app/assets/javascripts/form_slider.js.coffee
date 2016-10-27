@@ -22,6 +22,7 @@ window.sliderInput =
         step: currentSlider.data('step'),
         disabled: currentSlider.data('disabled'),
         labels: currentSlider.data('option_labels'),
+        colorGradient: currentSlider.data('color_gradient')
         value: inputField.attr('value'),
         create: ->
           console.log("create")

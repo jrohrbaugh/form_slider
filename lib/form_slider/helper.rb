@@ -22,6 +22,7 @@ module FormSlider
       if args[:option_labels].present?
         options['data-labels'] = args[:option_labels].join(",")
       end
+      options['data-color-gradient'] = args[:color_gradient]
       options['data-value-display'] = args[:value_display]
       options
     end
